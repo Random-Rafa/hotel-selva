@@ -1,0 +1,63 @@
+    <section class="section-padding widgets-section" id="widgets">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-tagline">Preparação de Viagem</span>
+                <h2 class="section-title">Widgets e Informações Práticas</h2>
+                <p class="section-subtitle">Monitore o clima em tempo real na reserva e organize sua mala sem esquecer nada.</p>
+            </div>
+
+            <div class="widgets-grid">
+                <!-- Weather Widget -->
+                <div class="widget-card">
+                    <div class="widget-header">
+                        <h3 class="widget-title">🌱 Clima na Selva em Tempo Real</h3>
+                        <span id="weather-clock" style="font-size: 0.85rem; color: var(--color-text-muted);">15:30</span>
+                    </div>
+                    <div class="weather-display">
+                        <div class="weather-main">
+                            <span style="font-size: 2.5rem;">⛅</span>
+                            <div>
+                                <div class="weather-temp" id="weather-temp">28°C</div>
+                                <div style="font-size: 0.85rem; opacity: 0.9;" id="weather-cond">Ensolarado c/ pancadas</div>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.85rem; font-weight: 600; color: var(--color-gold);" id="weather-moon">Lua Crescente</div>
+                            <div style="font-size: 0.75rem; opacity: 0.8;">Fase da Lua</div>
+                        </div>
+                    </div>
+
+                    <div class="weather-details-grid">
+                        <div class="weather-detail-box">
+                            <div class="weather-detail-val" id="weather-humidity">82%</div>
+                            <div class="weather-detail-lbl">Umidade</div>
+                        </div>
+                        <div class="weather-detail-box">
+                            <div class="weather-detail-val" id="weather-uv">Alta (8)</div>
+                            <div class="weather-detail-lbl">Índice UV</div>
+                        </div>
+                        <div class="weather-detail-box">
+                            <div class="weather-detail-val">28.5°C</div>
+                            <div class="weather-detail-lbl">Temp. Água</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Packing Checklist Widget -->
+                <div class="widget-card">
+                    <div class="widget-header">
+                        <h3 class="widget-title">🎒 Checklist de Mala para a Floresta</h3>
+                        <button class="btn btn-outline btn-sm" onclick="resetChecklist()">Restaurar</button>
+                    </div>
+                    <div class="checklist-input-group">
+                        <input type="text" id="checklist-new-item" placeholder="Adicionar item personalizado...">
+                        <button class="btn btn-forest btn-sm" onclick="addChecklistItem()">Adicionar</button>
+                    </div>
+                    <div class="checklist-items" id="checklist-container">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+

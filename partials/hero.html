@@ -1,0 +1,41 @@
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-tag">Sustentabilidade & Sofisticação</span>
+            <h1 class="hero-title">Sinta o Pulsar da Floresta com Luxo Imersivo</h1>
+            <p class="hero-subtitle">Sua casa no coração da Amazônia. Desconexão profunda, gastronomia de raiz e conforto inigualável em bangalôs suspensos.</p>
+            <button class="btn btn-primary" onclick="openBookingWizard()">Explore os Chalés</button>
+        </div>
+    </section>
+
+    <!-- Quick Search Widget -->
+    <div class="container search-bar-wrapper">
+        <form class="quick-search-box" id="quick-search-form" onsubmit="event.preventDefault(); triggerQuickSearch();">
+            <div class="search-field">
+                <label for="checkin-date">Check-in</label>
+                <input type="date" id="checkin-date" required>
+            </div>
+            <div class="search-field">
+                <label for="checkout-date">Check-out</label>
+                <input type="date" id="checkout-date" required>
+            </div>
+            <div class="search-field">
+                <label for="search-guests">Hóspedes</label>
+                <select id="search-guests">
+                    <option value="1">1 Adulto</option>
+                    <option value="2" selected>2 Adultos</option>
+                    <option value="3">3 Adultos</option>
+                    <option value="4">Família (4 pessoas)</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <label for="search-type">Tipo de Chalé</label>
+                <select id="search-type">
+                    <option value="all">Todos os tipos</option>
+                    <option value="jacuzzi">Com Jacuzzi</option>
+                    <option value="floating">Bangalô Flutuante</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar Vagas</button>
+        </form>
+    </div>
+
