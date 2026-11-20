@@ -1,0 +1,58 @@
+    <!-- Banner de Consentimento de Cookies (LGPD - Lei nº 13.709/2018) -->
+    <aside id="lgpd-banner" class="lgpd-banner" role="region" aria-label="Aviso de Privacidade e Cookies" hidden>
+        <div class="lgpd-banner-content">
+            <div class="lgpd-text">
+                <strong data-i18n="lgpd.title">Privacidade e Uso de Cookies (LGPD)</strong>
+                <p data-i18n="lgpd.description">
+                    Utilizamos cookies e armazenamento local para garantir o funcionamento das reservas (necessários) e, mediante seu consentimento, salvar seu checklist de viagem e idioma (funcionais).
+                </p>
+            </div>
+            <div class="lgpd-actions">
+                <button type="button" class="lgpd-btn-secondary" id="lgpd-customize-btn" data-i18n="lgpd.customize">Personalizar</button>
+                <button type="button" class="lgpd-btn-secondary" id="lgpd-reject-btn" data-i18n="lgpd.reject">Rejeitar Não Essenciais</button>
+                <button type="button" class="btn btn-primary btn-sm" id="lgpd-accept-all-btn" data-i18n="lgpd.acceptAll">Aceitar Todos</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Modal de Preferências Granulares LGPD -->
+    <div id="lgpd-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="lgpd-modal-title" aria-hidden="true">
+        <div class="modal-window" style="max-width: 540px; padding: 2rem;">
+            <button type="button" class="modal-close-btn" id="lgpd-close-x-btn" aria-label="Fechar preferências de privacidade">&times;</button>
+            <h3 id="lgpd-modal-title" style="font-family: var(--font-heading); color: var(--color-forest-dark);" data-i18n="lgpd.modalTitle">
+                Preferências de Privacidade (Lei nº 13.709/2018)
+            </h3>
+            <p style="font-size: 0.9rem; color: var(--color-text-muted); margin: 0.5rem 0 1rem;" data-i18n="lgpd.modalSubtitle">
+                Escolha quais categorias de cookies e armazenamento local você autoriza:
+            </p>
+
+            <div class="lgpd-option">
+                <label>
+                    <input type="checkbox" checked disabled>
+                    <span data-i18n="lgpd.catNecessary">Estritamente Necessários (Obrigatórios)</span>
+                </label>
+                <small data-i18n="lgpd.catNecessaryDesc">Essenciais para o processo de reserva e registro do seu consentimento.</small>
+            </div>
+
+            <div class="lgpd-option">
+                <label>
+                    <input type="checkbox" id="lgpd-opt-functional">
+                    <span data-i18n="lgpd.catFunctional">Funcionais e Preferências</span>
+                </label>
+                <small data-i18n="lgpd.catFunctionalDesc">Permitem salvar seu checklist de bagagem e idioma no navegador.</small>
+            </div>
+
+            <div class="lgpd-option">
+                <label>
+                    <input type="checkbox" id="lgpd-opt-analytics">
+                    <span data-i18n="lgpd.catAnalytics">Analíticos e Estatísticos</span>
+                </label>
+                <small data-i18n="lgpd.catAnalyticsDesc">Ajudam a entender quais chalés e páginas são mais acessados.</small>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                <button type="button" class="btn btn-outline btn-sm" id="lgpd-close-modal-btn" data-i18n="lgpd.cancel">Cancelar</button>
+                <button type="button" class="btn btn-forest btn-sm" id="lgpd-save-prefs-btn" data-i18n="lgpd.savePrefs">Salvar Preferências</button>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,35 @@
+.site-footer {
+    background-color: var(--color-forest-dark);
+    color: var(--color-cream-paper);
+    padding: 4rem 0 2rem 0;
+    border-top: 3px solid var(--color-gold-deep);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.footer-title {
+    font-family: var(--font-heading);
+    color: var(--color-gold);
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+.footer-links li {
+    margin-bottom: 0.6rem;
+}
+
+.footer-links a {
+    color: var(--color-cream-paper);
+    font-size: 0.9rem;
+    transition: var(--transition-smooth);
+}
+
+.footer-links a:hover {
+    color: var(--color-gold);
+}
+

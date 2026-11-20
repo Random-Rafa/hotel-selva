@@ -1,0 +1,28 @@
+@media (max-width: 992px) {
+    .hero-title { font-size: 2.8rem; }
+    .about-grid, .split-grid, .widgets-grid, .contact-grid, .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-img-main { height: 350px; }
+    .quick-search-box { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: var(--color-cream);
+        flex-direction: column;
+        justify-content: center;
+        transition: var(--transition-smooth);
+        box-shadow: var(--shadow-lg);
+    }
+    .nav-menu.active { right: 0; }
+    .hamburger-btn { display: flex; }
+    .quick-search-box { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.2rem; }
+    .section-title { font-size: 2rem; }
+}
