@@ -1,12 +1,20 @@
-function renderChalets(filterCategory) {
+let currentChaletFilter = 'all';
+
+function renderChalets(filterCategory = currentChaletFilter) {
+    currentChaletFilter = filterCategory;
     const container = id('chalets-container');
+    if (!container) return;
     container.innerHTML = '';
 
-    const filtered = filterCategory === 'all' 
-        ? CHALETS_DATA 
+    const filtered = filterCategory === 'all'
+        ? CHALETS_DATA
         : CHALETS_DATA.filter(c => c.category === filterCategory);
 
-    filtered.forEach(chalet => {
+    const perDayLabel = window.i18n ? window.i18n.t('chalets.perDay') : '/ diária';
+    const bookBtnLabel = window.i18n ? window.i18n.t('chalets.bookBtn') : 'Reservar';
+
+    filtered.forEach(rawChalet => {
+        const chalet = getLocalizedChalet(rawChalet);
         const card = document.createElement('div');
         card.className = 'chalet-card';
         card.innerHTML = `
@@ -26,9 +34,9 @@ function renderChalets(filterCategory) {
                 <div class="chalet-footer">
                     <div class="chalet-price">
                         <span class="price-amount">R$ ${chalet.price.toLocaleString('pt-BR')}</span>
-                        <span class="price-label">/ diária</span>
+                        <span class="price-label">${perDayLabel}</span>
                     </div>
-                    <button class="btn btn-forest btn-sm" onclick="selectChaletAndBook('${chalet.id}')">Reservar</button>
+                    <button type="button" class="btn btn-forest btn-sm" onclick="selectChaletAndBook('${chalet.id}')">${bookBtnLabel}</button>
                 </div>
             </div>
         `;

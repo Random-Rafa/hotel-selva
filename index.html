@@ -27,45 +27,67 @@
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/modal.css">
-    <!-- 5. Responsivo (sempre por último) -->
+    <!-- 5. Acessibilidade W3C, Alto Contraste e LGPD -->
+    <link rel="stylesheet" href="css/accessibility-lgpd.css">
+    <!-- 6. Responsivo (sempre por último) -->
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
+    <!-- Link de salto W3C (WCAG 2.4.1) -->
+    <a href="#main-content" class="skip-link" data-i18n="a11y.skip">Pular para o conteúdo principal</a>
+
     <!-- Cada seção é carregada dinamicamente de partials/*.html pelo js/loader.js -->
     <div id="app">
         <div data-include="partials/header.html"></div>
-        <div data-include="partials/hero.html"></div>
-        <div data-include="partials/about.html"></div>
-        <div data-include="partials/chalets.html"></div>
-        <div data-include="partials/gastronomy-spa.html"></div>
-        <div data-include="partials/widgets.html"></div>
-        <div data-include="partials/gallery.html"></div>
-        <div data-include="partials/faq.html"></div>
-        <div data-include="partials/contact.html"></div>
+
+        <main id="main-content" tabindex="-1">
+            <div data-include="partials/hero.html"></div>
+            <div data-include="partials/about.html"></div>
+            <div data-include="partials/chalets.html"></div>
+            <div data-include="partials/gastronomy-spa.html"></div>
+            <div data-include="partials/widgets.html"></div>
+            <div data-include="partials/gallery.html"></div>
+            <div data-include="partials/faq.html"></div>
+            <div data-include="partials/contact.html"></div>
+        </main>
+
         <div data-include="partials/footer.html"></div>
         <div data-include="partials/modal-booking.html"></div>
         <div data-include="partials/modal-lightbox.html"></div>
+        <div data-include="partials/cookie-banner.html"></div>
     </div>
+
+    <!-- Widget Oficial VLibras (Acessibilidade em Libras) -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 
     <!-- Carregador de partials HTML (deve vir primeiro) -->
     <script src="js/loader.js"></script>
 
-    <!-- Dados estáticos -->
+    <!-- Dados estáticos e utilitários -->
     <script src="js/data.js"></script>
-    <!-- Estado global da aplicação -->
-    <script src="js/state.js"></script>
-    <!-- Função utilitária -->
     <script src="js/utils.js"></script>
-    <!-- Módulos por funcionalidade -->
+
+    <!-- Governança LGPD, Acessibilidade W3C e Internacionalização -->
+    <script src="js/lgpd-cookies.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/i18n.js"></script>
+
+    <!-- Módulos de UI e Domínio (POO nos módulos de alto retorno: BookingWizard e ChecklistManager) -->
     <script src="js/header-nav.js"></script>
     <script src="js/chalets.js"></script>
-    <script src="js/search.js"></script>
     <script src="js/booking-wizard.js"></script>
     <script src="js/checklist.js"></script>
     <script src="js/gallery.js"></script>
     <script src="js/accordion.js"></script>
     <script src="js/contact.js"></script>
+
     <!-- Inicialização geral (deve vir por último) -->
     <script src="js/main.js"></script>
 </body>

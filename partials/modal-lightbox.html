@@ -1,7 +1,6 @@
-    <div class="modal-backdrop" id="lightbox-modal" onclick="closeLightbox()">
+    <div class="modal-backdrop" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visualização ampliada da galeria" aria-hidden="true" onclick="closeLightbox()">
         <div style="max-width: 90vw; max-height: 90vh; position: relative;" onclick="event.stopPropagation()">
-            <button class="modal-close-btn" onclick="closeLightbox()" style="top: -20px; right: -20px;">&times;</button>
-            <img id="lightbox-img" src="" alt="Ampliada" style="max-width: 100%; max-height: 85vh; border-radius: 8px; box-shadow: var(--shadow-lg);">
+            <button type="button" class="modal-close-btn" onclick="closeLightbox()" aria-label="Fechar imagem ampliada" style="top: -20px; right: -20px;">&times;</button>
+            <img id="lightbox-img" src="" alt="Fotografia ampliada do Hotel Selva" style="max-width: 100%; max-height: 85vh; border-radius: 8px; box-shadow: var(--shadow-lg);">
         </div>
     </div>
-

@@ -1,9 +1,9 @@
     <section class="hero" id="home">
         <div class="hero-content">
-            <span class="hero-tag">Sustentabilidade & Sofisticação</span>
-            <h1 class="hero-title">Sinta o Pulsar da Floresta com Luxo Imersivo</h1>
-            <p class="hero-subtitle">Sua casa no coração da Amazônia. Desconexão profunda, gastronomia de raiz e conforto inigualável em bangalôs suspensos.</p>
-            <button class="btn btn-primary" onclick="openBookingWizard()">Explore os Chalés</button>
+            <span class="hero-tag" data-i18n="hero.tag">Sustentabilidade & Sofisticação</span>
+            <h1 class="hero-title" data-i18n="hero.title">Sinta o Pulsar da Floresta com Luxo Imersivo</h1>
+            <p class="hero-subtitle" data-i18n="hero.subtitle">Sua casa no coração da Amazônia. Desconexão profunda, gastronomia de raiz e conforto inigualável em bangalôs suspensos.</p>
+            <button type="button" class="btn btn-primary" onclick="openBookingWizard()" data-i18n="hero.cta">Explore os Chalés</button>
         </div>
     </section>
 
@@ -11,31 +11,30 @@
     <div class="container search-bar-wrapper">
         <form class="quick-search-box" id="quick-search-form" onsubmit="event.preventDefault(); triggerQuickSearch();">
             <div class="search-field">
-                <label for="checkin-date">Check-in</label>
+                <label for="checkin-date" data-i18n="search.checkin">Check-in</label>
                 <input type="date" id="checkin-date" required>
             </div>
             <div class="search-field">
-                <label for="checkout-date">Check-out</label>
+                <label for="checkout-date" data-i18n="search.checkout">Check-out</label>
                 <input type="date" id="checkout-date" required>
             </div>
             <div class="search-field">
-                <label for="search-guests">Hóspedes</label>
+                <label for="search-guests" data-i18n="search.guests">Hóspedes</label>
                 <select id="search-guests">
-                    <option value="1">1 Adulto</option>
-                    <option value="2" selected>2 Adultos</option>
-                    <option value="3">3 Adultos</option>
-                    <option value="4">Família (4 pessoas)</option>
+                    <option value="1" data-i18n="search.guests1">1 Adulto</option>
+                    <option value="2" selected data-i18n="search.guests2">2 Adultos</option>
+                    <option value="3" data-i18n="search.guests3">3 Adultos</option>
+                    <option value="4" data-i18n="search.guests4">Família (4 pessoas)</option>
                 </select>
             </div>
             <div class="search-field">
-                <label for="search-type">Tipo de Chalé</label>
+                <label for="search-type" data-i18n="search.type">Tipo de Chalé</label>
                 <select id="search-type">
-                    <option value="all">Todos os tipos</option>
-                    <option value="jacuzzi">Com Jacuzzi</option>
-                    <option value="floating">Bangalô Flutuante</option>
+                    <option value="all" data-i18n="search.typeAll">Todos os tipos</option>
+                    <option value="jacuzzi" data-i18n="search.typeJacuzzi">Com Jacuzzi</option>
+                    <option value="floating" data-i18n="search.typeFloating">Bangalô Flutuante</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Buscar Vagas</button>
+            <button type="submit" class="btn btn-primary" data-i18n="search.btn">Buscar Vagas</button>
         </form>
     </div>
-
