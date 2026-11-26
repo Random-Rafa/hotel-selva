@@ -1,0 +1,157 @@
+    <div class="modal-backdrop" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title" aria-hidden="true">
+        <div class="modal-window">
+            <button type="button" class="modal-close-btn" onclick="closeBookingWizard()" aria-label="Fechar janela de reserva">&times;</button>
+            <div class="wizard-header">
+                <h3 id="booking-modal-title" style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-gold);" data-i18n="wiz.title">Reserva Online - Hotel Selva</h3>
+                <p style="font-size: 0.85rem; color: var(--color-cream-paper);" data-i18n="wiz.subtitle">Garanta sua experiência inesquecível na Amazônia</p>
+                
+                <div class="wizard-steps" aria-label="Etapas da reserva">
+                    <div class="wizard-step-node active" id="step-node-1">1</div>
+                    <div class="wizard-step-node" id="step-node-2">2</div>
+                    <div class="wizard-step-node" id="step-node-3">3</div>
+                    <div class="wizard-step-node" id="step-node-4">4</div>
+                    <div class="wizard-step-node" id="step-node-5">5</div>
+                </div>
+            </div>
+
+            <div class="wizard-body">
+                <!-- Step 1: Dates & Guests -->
+                <div class="wizard-step-content active" id="wizard-step-1">
+                    <h4 style="color: var(--color-forest-dark); margin-bottom: 1rem;" data-i18n="wiz.step1Title">Etapa 1: Selecione as Datas e Hóspedes</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="wiz-checkin" data-i18n="wiz.checkin">Data de Check-in</label>
+                            <input type="date" id="wiz-checkin" onchange="updateBookingCalculation()">
+                        </div>
+                        <div class="form-group">
+                            <label for="wiz-checkout" data-i18n="wiz.checkout">Data de Check-out</label>
+                            <input type="date" id="wiz-checkout" onchange="updateBookingCalculation()">
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
+                        <div class="form-group">
+                            <label for="wiz-adults" data-i18n="wiz.adults">Adultos</label>
+                            <select id="wiz-adults" onchange="updateBookingCalculation()">
+                                <option value="1" data-i18n="search.guests1">1 Adulto</option>
+                                <option value="2" selected data-i18n="search.guests2">2 Adultos</option>
+                                <option value="3" data-i18n="search.guests3">3 Adultos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="wiz-children" data-i18n="wiz.children">Crianças (até 12 anos)</label>
+                            <select id="wiz-children" onchange="updateBookingCalculation()">
+                                <option value="0" data-i18n="wiz.child0">Nenhuma</option>
+                                <option value="1" data-i18n="wiz.child1">1 Criança</option>
+                                <option value="2" data-i18n="wiz.child2">2 Crianças</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1.5rem; text-align: right;">
+                        <button type="button" class="btn btn-primary" onclick="goToWizardStep(2)" data-i18n="wiz.nextStep2">Avançar para Acomodações &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Chalet Selection -->
+                <div class="wizard-step-content" id="wizard-step-2">
+                    <h4 style="color: var(--color-forest-dark); margin-bottom: 1rem;" data-i18n="wiz.step2Title">Etapa 2: Escolha seu Chalé</h4>
+                    <div id="wiz-chalet-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <!-- Chalets option radios populated via JS -->
+                    </div>
+                    <div style="margin-top: 1.5rem; display: flex; justify-content: space-between;">
+                        <button type="button" class="btn btn-outline" onclick="goToWizardStep(1)" data-i18n="wiz.back">&larr; Voltar</button>
+                        <button type="button" class="btn btn-primary" onclick="goToWizardStep(3)" data-i18n="wiz.nextStep3">Avançar para Adicionais &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Add-ons & Experiences -->
+                <div class="wizard-step-content" id="wizard-step-3">
+                    <h4 style="color: var(--color-forest-dark); margin-bottom: 1rem;" data-i18n="wiz.step3Title">Etapa 3: Personalize com Experiências Extras</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <label style="display: flex; align-items: center; justify-content: space-between; padding: 0.8rem; background: var(--color-white); border-radius: 8px; border: 1px solid var(--color-gray-soft); cursor: pointer;">
+                            <div>
+                                <strong data-i18n="wiz.addonTransferTitle">Traslado de Lancha Privativa (Ida e Volta)</strong>
+                                <div style="font-size: 0.8rem; color: var(--color-text-muted);" data-i18n="wiz.addonTransferDesc">Saindo de Manaus direto para o hotel</div>
+                            </div>
+                            <div>
+                                <span>R$ 850,00</span>
+                                <input type="checkbox" id="addon-transfer" onchange="updateBookingCalculation()">
+                            </div>
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; padding: 0.8rem; background: var(--color-white); border-radius: 8px; border: 1px solid var(--color-gray-soft); cursor: pointer;">
+                            <div>
+                                <strong data-i18n="wiz.addonDinnerTitle">Jantar Romântico Exclusivo na Copa das Árvores</strong>
+                                <div style="font-size: 0.8rem; color: var(--color-text-muted);" data-i18n="wiz.addonDinnerDesc">Menu degustação de 5 passos com harmonização</div>
+                            </div>
+                            <div>
+                                <span>R$ 620,00</span>
+                                <input type="checkbox" id="addon-dinner" onchange="updateBookingCalculation()">
+                            </div>
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; padding: 0.8rem; background: var(--color-white); border-radius: 8px; border: 1px solid var(--color-gray-soft); cursor: pointer;">
+                            <div>
+                                <strong data-i18n="wiz.addonSpaTitle">Massagem Nativa Relaxante no Spa (Casal)</strong>
+                                <div style="font-size: 0.8rem; color: var(--color-text-muted);" data-i18n="wiz.addonSpaDesc">60 minutos com banho de imersão botânico</div>
+                            </div>
+                            <div>
+                                <span>R$ 480,00</span>
+                                <input type="checkbox" id="addon-spa" onchange="updateBookingCalculation()">
+                            </div>
+                        </label>
+                    </div>
+                    <div style="margin-top: 1.5rem; display: flex; justify-content: space-between;">
+                        <button type="button" class="btn btn-outline" onclick="goToWizardStep(2)" data-i18n="wiz.back">&larr; Voltar</button>
+                        <button type="button" class="btn btn-primary" onclick="goToWizardStep(4)" data-i18n="wiz.nextStep4">Dados do Hóspede &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Guest Data -->
+                <div class="wizard-step-content" id="wizard-step-4">
+                    <h4 style="color: var(--color-forest-dark); margin-bottom: 1rem;" data-i18n="wiz.step4Title">Etapa 4: Informações do Titular</h4>
+                    <div class="form-group">
+                        <label for="wiz-guest-name" data-i18n="wiz.guestName">Nome Completo</label>
+                        <input type="text" id="wiz-guest-name" data-i18n-placeholder="wiz.guestNamePlaceholder" placeholder="Ex: Gabriel Santos">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="wiz-guest-email" data-i18n="wiz.guestEmail">E-mail Principal</label>
+                            <input type="email" id="wiz-guest-email" placeholder="gabriel@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="wiz-guest-phone" data-i18n="wiz.guestPhone">WhatsApp / Telefone</label>
+                            <input type="tel" id="wiz-guest-phone" placeholder="(92) 99999-9999">
+                        </div>
+                    </div>
+
+                    <!-- Summary Box -->
+                    <div style="background-color: var(--color-cream-paper); padding: 1rem; border-radius: var(--radius-sm); margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.1rem; color: var(--color-forest-dark);">
+                            <span data-i18n="wiz.totalLabel">Valor Total Estimado:</span>
+                            <span id="wiz-total-price">R$ 0,00</span>
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--color-text-muted);" id="wiz-summary-details">0 Noites | 0 Hóspedes</div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; display: flex; justify-content: space-between;">
+                        <button type="button" class="btn btn-outline" onclick="goToWizardStep(3)" data-i18n="wiz.back">&larr; Voltar</button>
+                        <button type="button" class="btn btn-primary" onclick="finalizeBooking()" data-i18n="wiz.finishBtn">Finalizar Reserva &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Voucher & Confirmation -->
+                <div class="wizard-step-content" id="wizard-step-5">
+                    <div class="voucher-card">
+                        <span style="background: var(--color-forest-deep); color: var(--color-gold); font-size: 0.75rem; padding: 0.2rem 0.8rem; border-radius: 20px;" data-i18n="wiz.confirmedBadge">CONFIRMADO</span>
+                        <h3 style="font-family: var(--font-heading); color: var(--color-forest-dark); margin-top: 0.5rem;" data-i18n="wiz.voucherTitle">Voucher de Reserva Oficial</h3>
+                        <div class="voucher-code" id="voucher-code-display">SELVA-84920</div>
+                        <div style="margin: 1rem 0; text-align: center;">
+                            <canvas id="qr-canvas" width="120" height="120" aria-label="QR Code do voucher de reserva" style="margin: 0 auto; display: block; border: 1px solid var(--color-gray-soft);"></canvas>
+                        </div>
+                        <div id="voucher-details" style="text-align: left; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.5rem; background: var(--color-cream-paper); padding: 1rem; border-radius: 8px;">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="window.print()" data-i18n="wiz.printBtn">Imprimir Voucher (PDF)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
